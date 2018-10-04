@@ -1,11 +1,6 @@
-; [user]
-; 	email = aebrownz11@gmail.com
-; 	name = aebrow4
-; 	password = aebrow4
 [user]
 	email = aebrownz11@gmail.com
 	name = aebrow4
-	password = 78dc2af71b229c70de777f347323a9b363d2c23c
 [core]
 	editor = 'vim'
 	excludesfile = ~/.gitignore
