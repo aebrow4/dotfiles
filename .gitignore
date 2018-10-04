@@ -1,0 +1,9 @@
+**/package-lock.json
+package-lock.json
+public*
+vendor*
+**/*.swp
+**/node_modules/**
+!**/locales/en_US.yml
+**/locales/*.yml
+config/locales/*
