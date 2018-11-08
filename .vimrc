@@ -1,19 +1,17 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+colorscheme molokai
 
-colorscheme gruvbox
+set termguicolors
 set nu
-set hidden
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
+set clipboard=unnamed
 
-" Buffer navigation
+" Buffers
+set hidden
 nmap <leader>T :enew<CR>
 nmap <S-l> :bnext<CR>
 nmap <S-h> :bprevious<CR>
-" vim-bufkill - Buffer deletion and wiping
 nmap <leader>bd :BD<CR>
 nmap <leader>bw :BW<CR>
 
@@ -35,9 +33,6 @@ nmap <leader>k <C-W>k
 " cut from the left of the cursor and append to the line above
 nmap , v$hdkA<space><esc>P
 
-" Store yanked text in the clipboard too
-set clipboard=unnamed
-
 " delete text without storing it in a register
 xnoremap x "_d
 nnoremap x "_x
@@ -49,8 +44,6 @@ set smartcase
 set hlsearch
 nmap <leader>c :nohlsearch<CR>
 
-" indenting
-vmap zi I<tab><esc>
 " Search
 " Add homebrew installed fzf to runtimepath
 set rtp+=/usr/local/opt/fzf
@@ -122,12 +115,12 @@ let g:AutoPairsUseInsertedCount = 1
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js,*.tsx'
 
 " filenames like *.xml, *.xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
 "
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.tsx'
 
 " integer value [0|1]
 " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
@@ -161,4 +154,7 @@ function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 set statusline+=%{SyntaxItem()}
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
